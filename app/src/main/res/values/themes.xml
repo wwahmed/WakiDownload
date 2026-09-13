@@ -1,0 +1,18 @@
+<resources>
+    <style name="Theme.WakiDownload" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/waki_seed</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <!-- The share target is a translucent card over whatever app the link came from. -->
+    <style name="Theme.WakiDownload.Share" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/waki_seed</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+</resources>
