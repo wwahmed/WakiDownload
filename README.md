@@ -1,8 +1,11 @@
 # WakiDownload
 
-Android app, one job: share a Twitter / X or TikTok link to it and the video or pictures land in
-`Downloads/WakiDownload/`. TikTok videos are saved without the watermark. Side-loaded, self-updating
-from GitHub Releases, no accounts, no analytics.
+Android app, one job: share a link or a file to it and the video or pictures land where you want
+them. Twitter / X and TikTok links are resolved to their media (TikTok without the watermark);
+any other link is saved if it points at a picture, a video, or a page with one; any file shared
+from any app (WhatsApp, a browser, Photos) is saved as is. Targets: `Downloads/WakiDownload/`,
+Google Drive, OneDrive, or any folder picked in the Files app. Side-loaded, self-updating from
+GitHub Releases, no analytics.
 
 <!-- CURRENT_VERSION:START -->
 **Current version: unreleased**
@@ -19,9 +22,15 @@ Files are named `<source>-<yyyymmdd-hhmmss>-<short-id>.<ext>`, for example
 `tiktok-20260912-203015-511711.mp4`. A tweet with several pictures gets `-1`, `-2`, ... before the
 extension.
 
-The app's own screen lists recent downloads, has **Check for updates** (also runs on every cold
-start) and shows the default folder. Sharing an actual image or video file to WakiDownload copies
-it into the same folder.
+The share card asks where to save (chips for every configured location) and has an **NSFW**
+checkbox that switches to the NSFW location and adds the NSFW subfolder. Turn "Ask where to save
+on every share" off and shares go straight to the per-source default.
+
+The app's own screen has: **Save locations** (connect Google Drive, connect OneDrive, add folders
+from the Files app), **Default location per source** (Twitter / X, TikTok, other links, files
+shared from apps, NSFW), **Check for updates** (also runs on every cold start), and recent
+downloads. Cloud setup, including the one-time OneDrive registration and the Personal Vault
+limitation, is in [docs/CLOUD_SETUP.md](docs/CLOUD_SETUP.md).
 
 ## Install
 
