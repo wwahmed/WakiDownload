@@ -47,3 +47,31 @@ including the mid-build scope additions.
 Google account and, per docs/CLOUD_SETUP.md, possibly the Android OAuth client in waki-brain),
 an actual OneDrive upload (needs the Entra registration), and whether the OneDrive app's
 provider exposes Personal Vault to the folder picker.
+
+## v0.2.0 (2026-09-13), the redesign plus cloud sign-in
+
+**Shipped.** Bottom tabs (Library, Activity, Settings), Material 3 dynamic color, splash, edge to
+edge. Library: masonry thumbnails via Glide, source badge, duration badge, resolution and duration
+read lazily and faded in, filters, long-press and overflow menu, details sheet with progressive
+facts, share, delete (MediaStore or DocumentsContract). Activity: live WorkManager jobs with a
+three-step stepper, per-step progress, found-summary ("1 video"), retry on failure. Settings: brand
+icons, per-source defaults, updater row. Share card: bottom sheet with chips, NSFW switch, stepper,
+saved thumbnail and check, self-dismiss. OneDrive client id compiled in (row now offers Connect).
+TikTok tier 2 mobile-UA retry.
+
+**Verification on the emulator (release-signed).** Library, Activity, Settings, share chooser,
+stepper mid-download and "Saved" state captured (`qa/screenshots/2026-09-13-v0.2.0/`). TikTok share
+end to end: tier 1 logged dead, tier 2 got the bot-check shell (fix shipped in this build), tier 3
+saved `tiktok-20260913-012836-511711.mp4` (1080x1920 HEVC), frame at 60 s has no watermark. OneDrive
+Connect opened Chrome on login.microsoftonline.com. Google Drive Connect not exercised (no account
+on the emulator). Unit tests 28 run, 0 failed.
+
+**Cloud registrations.** Google: Android OAuth client created in waki-brain for the release SHA-1,
+type-1 client visible in the Firebase config. Microsoft: app 323c4a65-053a-4b3e-8738-989884bbc4dc
+in wwahmed.private@outlook.com's Default Directory, public client, redirect
+`wakidownload://oauth/microsoft`, "Allow public client flows" on. Azure support request
+2609130040000310 open for the locked waqinator tenant.
+
+**NOT verified.** A real Drive or OneDrive upload (needs Waqas's accounts on a device), the
+Personal Vault picker question, and the mobile-UA retry against a live bot-check (no reproduction
+on hand at ship time; the tikwm tier stays behind it).

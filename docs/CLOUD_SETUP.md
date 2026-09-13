@@ -18,7 +18,21 @@ the account's own sign-in (OAuth 2.0); the app never sees a password and stores 
   the cert: Cloud Console, project waki-brain, APIs & Services, Credentials, Create OAuth client ID,
   type Android, package `dev.wakilabs.wakidownload`, the SHA-1 above. One minute, no rebuild.
 
-## OneDrive (needs a one-time Entra registration by Waqas)
+## OneDrive (registered 2026-09-13)
+
+Registered as app `WakiDownload`, Application (client) ID `323c4a65-053a-4b3e-8738-989884bbc4dc`,
+in the Default Directory (tenant `a9942d58-bf11-468e-91d0-2b6da95fe81b`) that belongs to the
+personal account wwahmed.private@outlook.com. Audience "All Microsoft account users", platform
+"Public client/native", redirect `wakidownload://oauth/microsoft`. The registration's home
+directory does not matter to the OneDrive user: waqinator@hotmail.com (or any Microsoft account)
+signs in to the app and reaches its own OneDrive. The client id is in
+`~/.wakilabs-keystores/WakiDownload.oauth.properties` and compiled into the APK.
+
+Background: waqinator@hotmail.com owns tenant `b9ee64b1-d8dd-44b0-999e-9f5923d7b03d`, whose only
+MFA method (Authenticator) was lost; Azure support request `2609130040000310` (filed from the
+private account's subscription, 2026-09-13) asks Microsoft to reset it or delete the tenant.
+
+### Original steps, kept for reference
 
 - Mechanism: plain OAuth 2.0 authorization code + PKCE in the browser against
   `login.microsoftonline.com/common` (personal and work accounts), scopes

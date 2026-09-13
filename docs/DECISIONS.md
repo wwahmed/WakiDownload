@@ -83,3 +83,34 @@ target.
 With four target kinds (MediaStore, SAF document, Drive resumable upload, Graph upload session),
 one staging file per item keeps the worker simple: fetch (progress phase 1), then save
 (phase 2). The extra local copy costs nothing noticeable on a phone.
+
+## 2026-09-13 OneDrive registration lives in a fresh directory
+waqinator@hotmail.com's own tenant (b9ee64b1…) is locked behind a lost Authenticator
+registration; Azure support request 2609130040000310 asks for the reset. Rather than wait, the
+WakiDownload app registration (client id 323c4a65-053a-4b3e-8738-989884bbc4dc) was created in the
+Default Directory of wwahmed.private@outlook.com, which got a directory through the Azure free
+sign-up. With audience "All Microsoft account users" the registration's home directory is
+irrelevant to which OneDrive the files land in; the signed-in user's drive is used. A second,
+identical registration (cfd98382…) was created by a double submit and is unused.
+
+## 2026-09-13 Google Android OAuth client created by hand
+Firebase's API registered the app and its certificate hashes but never provisioned the Android
+OAuth client (that needs Firebase Auth, which needs billing). The client was created in the Cloud
+console for package dev.wakilabs.wakidownload with the release SHA-1 d4c54735…; the consent screen
+is in Testing with wwahmed@gmail.com as a test user. Debug builds have no client and cannot sign in.
+
+## 2026-09-13 v0.2.0 redesign: three tabs, thumbnails, stepper
+Waqas judged v0.1.0 bare. v0.2.0 is Material 3 with dynamic color, a splash, edge to edge, and
+three tabs: Library (two-column masonry of thumbnails with source and duration badges, filter
+chips, progressive facts, details sheet with open/share/delete), Activity (every WorkManager
+job with a Resolve/Download/Save stepper and retry), Settings (locations with brand icons,
+per-source defaults, updater). The share card is a bottom sheet with location chips, an NSFW
+switch and the same stepper, showing "Found 1 video" the moment the link resolves and the saved
+thumbnail with a check mark before it dismisses. Views over Compose, still: the animations are
+spring and fade helpers, no framework swap needed.
+
+## 2026-09-13 TikTok tier 2 retries with the mobile UA
+On the redesign QA run TikTok answered the desktop request with its bot-check shell instead of
+the page, tier 2 logged "no known state blob" and tier 3 (tikwm, HD, watermark-free, verified by
+frame) saved the download. Tier 2 now makes a second request with the mobile UA carrying the
+cookies the shell set, which returns the reflow-shaped page.

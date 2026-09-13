@@ -25,9 +25,14 @@ class DownloadHistory(context: Context) {
     fun all(): List<HistoryEntry> = synchronized(lock) { read() }
 
     fun add(entries: List<HistoryEntry>) = synchronized(lock) {
-        val merged = (entries.sortedByDescending { it.time } + read()).take(MAX)
+        write((entries.sortedByDescending { it.time } + read()).take(MAX))
+    }
+
+    fun remove(uri: String) = synchronized(lock) { write(read().filterNot { it.uri == uri }) }
+
+    private fun write(entries: List<HistoryEntry>) {
         val arr = JSONArray()
-        merged.forEach { e ->
+        entries.forEach { e ->
             arr.put(JSONObject().apply {
                 put("name", e.name); put("uri", e.uri); put("mime", e.mime); put("source", e.source)
                 put("kind", e.kind); put("bytes", e.bytes); put("time", e.time); put("target", e.target); put("nsfw", e.nsfw)

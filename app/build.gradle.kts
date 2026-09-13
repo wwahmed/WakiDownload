@@ -32,8 +32,8 @@ android {
         applicationId = "dev.wakilabs.wakidownload"
         minSdk = 29
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 2
+        versionName = "0.2.0"
 
         buildConfigField("String", "RELEASE_CERT_SHA256", "\"$releaseCertSha256\"")
         buildConfigField("String", "REPO_URL", "\"https://github.com/wwahmed/WakiDownload\"")
@@ -102,6 +102,11 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
     implementation("com.google.android.gms:play-services-auth:21.1.1")
     implementation("androidx.browser:browser:1.8.0")
+    implementation("androidx.fragment:fragment-ktx:1.8.9")
+    implementation("androidx.core:core-splashscreen:1.0.1")
+    implementation("androidx.dynamicanimation:dynamicanimation:1.1.0")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    implementation("com.github.bumptech.glide:glide:5.0.5")
 
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.json:json:20180813")

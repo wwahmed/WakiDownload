@@ -1,4 +1,12 @@
 <resources>
+    <!-- Seed and fallback palette (dynamic color takes over on Android 12+). -->
     <color name="waki_seed">#0F766E</color>
     <color name="ic_launcher_background">#0F766E</color>
+    <color name="splash_background">#0F766E</color>
+    <color name="badge_video">#1E3A8A</color>
+    <color name="badge_image">#7C2D12</color>
+    <color name="badge_gif">#4C1D95</color>
+    <color name="skeleton">#1F000000</color>
+    <color name="skeleton_dark">#1FFFFFFF</color>
+    <color name="scrim">#66000000</color>
 </resources>

@@ -1,18 +1,78 @@
 <resources>
-    <style name="Theme.WakiDownload" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.WakiDownload.Base" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/waki_seed</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:enforceNavigationBarContrast">false</item>
+        <item name="materialCardViewStyle">@style/Widget.WakiDownload.Card</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.WakiDownload.BottomSheet</item>
     </style>
 
-    <!-- The share target is a translucent card over whatever app the link came from. -->
-    <style name="Theme.WakiDownload.Share" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/waki_seed</item>
+    <style name="Theme.WakiDownload" parent="Theme.WakiDownload.Base" />
+
+    <!-- Splash: the icon on the brand color, then straight into the tabs. -->
+    <style name="Theme.WakiDownload.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash</item>
+        <item name="windowSplashScreenAnimationDuration">500</item>
+        <item name="postSplashScreenTheme">@style/Theme.WakiDownload</item>
+    </style>
+
+    <!-- The share target is a translucent bottom card over whatever app the link came from. -->
+    <style name="Theme.WakiDownload.Share" parent="Theme.WakiDownload.Base">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:backgroundDimEnabled">true</item>
-        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:backgroundDimAmount">0.45</item>
+        <item name="android:windowAnimationStyle">@style/Animation.WakiDownload.Share</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="Animation.WakiDownload.Share" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/share_enter</item>
+        <item name="android:activityOpenExitAnimation">@anim/share_stay</item>
+        <item name="android:activityCloseEnterAnimation">@anim/share_stay</item>
+        <item name="android:activityCloseExitAnimation">@anim/share_exit</item>
+    </style>
+
+    <style name="Widget.WakiDownload.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">20dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="cardBackgroundColor">?attr/colorSurfaceContainer</item>
+    </style>
+
+    <style name="ThemeOverlay.WakiDownload.BottomSheet" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.WakiDownload.BottomSheet</item>
+    </style>
+
+    <style name="Widget.WakiDownload.BottomSheet" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="shapeAppearance">@style/ShapeAppearance.WakiDownload.Sheet</item>
+    </style>
+
+    <style name="ShapeAppearance.WakiDownload.Sheet" parent="ShapeAppearance.Material3.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">28dp</item>
+        <item name="cornerSizeTopRight">28dp</item>
+    </style>
+
+    <style name="TextAppearance.WakiDownload.Badge" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:letterSpacing">0.04</item>
+    </style>
+
+    <style name="Widget.WakiDownload.Step" parent="Widget.Material3.Chip.Assist">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingVertical">6dp</item>
+        <item name="android:textAppearance">?attr/textAppearanceLabelMedium</item>
+        <item name="android:textColor">@color/step_text</item>
+        <item name="android:background">@drawable/bg_step</item>
     </style>
 </resources>

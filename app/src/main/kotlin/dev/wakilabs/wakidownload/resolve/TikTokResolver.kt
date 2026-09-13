@@ -86,14 +86,23 @@ object TikTokResolver {
     // Tier 2
 
     private fun fetchWebPage(pageUrl: String, client: okhttp3.OkHttpClient, jar: dev.wakilabs.wakidownload.core.MemoryCookieJar): List<MediaItem> {
-        val html = Http.getString(
-            pageUrl,
-            mapOf("User-Agent" to Http.UA_DESKTOP, "Accept" to "text/html,application/xhtml+xml", "Accept-Language" to "en-US,en;q=0.9"),
-            client,
-        )
-        val cookie = jar.headerFor("tiktok.com")
-        val headers = mapOf("User-Agent" to Http.UA_DESKTOP, "Referer" to "https://www.tiktok.com/", "Cookie" to cookie)
-        val items = parseWebPage(html, headers)
+        // TikTok sometimes answers the first request with a bot-check shell (the "webmssdk" page)
+        // instead of the rendered page. A second request with the mobile UA, now carrying the
+        // cookies the shell handed out, usually gets the real page (reflow shape).
+        var items: List<MediaItem> = emptyList()
+        var html = ""
+        for (ua in listOf(Http.UA_DESKTOP, Http.UA_MOBILE)) {
+            html = Http.getString(
+                pageUrl,
+                mapOf("User-Agent" to ua, "Accept" to "text/html,application/xhtml+xml", "Accept-Language" to "en-US,en;q=0.9"),
+                client,
+            )
+            val cookie = jar.headerFor("tiktok.com")
+            val headers = mapOf("User-Agent" to ua, "Referer" to "https://www.tiktok.com/", "Cookie" to cookie)
+            items = parseWebPage(html, headers)
+            if (items.isNotEmpty()) break
+            Log.w(TAG, "tiktok tier2 ($ua) no media yet; retrying with the other UA")
+        }
         if (items.isEmpty()) {
             val hint = when {
                 "__UNIVERSAL_DATA_FOR_REHYDRATION__" in html -> "rehydration present but no media: " + (extractScript(html, "__UNIVERSAL_DATA_FOR_REHYDRATION__")?.take(400) ?: "")
