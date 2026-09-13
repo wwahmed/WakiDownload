@@ -48,7 +48,12 @@ CERT="$("$BT/apksigner" verify --print-certs "$APK" 2>/dev/null | sed -n 's/.*SH
 [ "$("$BT/aapt" dump permissions "$APK" 2>/dev/null | grep -c "REQUEST_INSTALL_PACKAGES")" -ge 1 ] || { echo "✗ updater contract MISSING (REQUEST_INSTALL_PACKAGES)" >&2; exit 1; }
 [ "$("$BT/aapt" dump xmltree "$APK" AndroidManifest.xml 2>/dev/null | grep -c "InstallReceiver")" -ge 1 ] || { echo "✗ updater contract MISSING (InstallReceiver)" >&2; exit 1; }
 # versionCode is the update authority (Android installs by code, not name): must beat the last published.
-PREV_CODE="$(gh api "/repos/$REPO/releases/latest" --jq '.assets[]|select(.name=="latest.json").browser_download_url' 2>/dev/null | { read -r u; [ -n "$u" ] && curl -fsSL "$u" | python3 -c 'import sys,json;print(json.load(sys.stdin).get("versionCode",0))' || echo 0; })"
+PREV_CODE=0
+PREV_MANIFEST_URL="$(gh api "/repos/$REPO/releases/latest" --jq '.assets[]|select(.name=="latest.json").browser_download_url' 2>/dev/null || true)"
+case "$PREV_MANIFEST_URL" in
+  https://*) PREV_CODE="$(curl -fsSL "$PREV_MANIFEST_URL" | python3 -c 'import sys,json;print(json.load(sys.stdin).get("versionCode",0))' 2>/dev/null || echo 0)" ;;
+  *) echo "  (no previous release: first publish)" ;;
+esac
 [ "$APK_CODE" -gt "${PREV_CODE:-0}" ] || { echo "✗ APK versionCode ($APK_CODE) is not greater than last published ($PREV_CODE)" >&2; exit 1; }
 SHA="$(shasum -a 256 "$APK" | awk '{print $1}')"
 BYTES="$(stat -f%z "$APK" 2>/dev/null || stat -c%s "$APK")"
