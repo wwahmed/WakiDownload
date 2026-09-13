@@ -1,7 +1,10 @@
 # Install WakiDownload
 
 <!-- CURRENT_VERSION:START -->
-**Current version: unreleased**
+**Current version: v0.1.0** · SHA-256 `6255edb8884a66861590412166c94801bc05515775b8d2f4a707f96a949a0e07`
+
+- [Latest APK (always newest)](https://github.com/wwahmed/WakiDownload/releases/latest/download/WakiDownload.apk) · [release notes](https://github.com/wwahmed/WakiDownload/releases/latest)
+- [v0.1.0 APK (this exact version)](https://github.com/wwahmed/WakiDownload/releases/download/v0.1.0/WakiDownload-v0.1.0.apk) · [v0.1.0 notes](https://github.com/wwahmed/WakiDownload/releases/tag/v0.1.0)
 <!-- CURRENT_VERSION:END -->
 
 Bookmark **https://github.com/wwahmed/WakiDownload/releases/latest**; it always redirects to the
