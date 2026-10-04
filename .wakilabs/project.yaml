@@ -1,0 +1,8 @@
+id: waki-download
+name: waki-download
+displayName: "Waki Download"
+archetype: android-app
+family: life
+conventionsVersion: 1
+foundationPin: null
+registry: ~/workspaces/wakilabs/registry/projects.json
