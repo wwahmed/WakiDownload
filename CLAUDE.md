@@ -34,7 +34,7 @@ piped exit code):
    SHA-256 matches the local APK (publish.sh re-downloads by asset id and diffs).
 5. RELEASE.md's version block carries the REAL sha256 (publish.sh writes it).
 6. The Waqas-facing URL is live and serves the new version:
-   `https://github.com/wwahmed/WakiDownload/releases/latest/download/WakiDownload.apk`
+   `https://github.com/wwahmed/waki-download/releases/latest/download/WakiDownload.apk`
    (public repo: an anonymous `curl -L` must return the new digest; publish.sh checks this).
 7. **PushNotification fired to Waqas's phone**, ONCE per real ship, only AFTER 1-6 verified. One
    line, under 100 characters of what is new plus the latest-download URL. Never on a partial ship,

@@ -36,13 +36,13 @@ android {
         versionName = "0.2.0"
 
         buildConfigField("String", "RELEASE_CERT_SHA256", "\"$releaseCertSha256\"")
-        buildConfigField("String", "REPO_URL", "\"https://github.com/wwahmed/WakiDownload\"")
+        buildConfigField("String", "REPO_URL", "\"https://github.com/wwahmed/waki-download\"")
         buildConfigField("String", "MS_CLIENT_ID", "\"$msClientId\"")
         buildConfigField("String", "MS_REDIRECT_URI", "\"$msRedirectUri\"")
         buildConfigField(
             "String",
             "UPDATE_MANIFEST_URL",
-            "\"https://github.com/wwahmed/WakiDownload/releases/latest/download/latest.json\"",
+            "\"https://github.com/wwahmed/waki-download/releases/latest/download/latest.json\"",
         )
     }
 

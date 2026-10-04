@@ -10,8 +10,8 @@ GitHub Releases, no analytics.
 <!-- CURRENT_VERSION:START -->
 **Current version: v0.2.0** · SHA-256 `ea76fd34f0896afb1c90bd9b5736823c53a686b2ebf85ce228607c1234e501ca`
 
-- [Latest APK (always newest)](https://github.com/wwahmed/WakiDownload/releases/latest/download/WakiDownload.apk) · [release notes](https://github.com/wwahmed/WakiDownload/releases/latest)
-- [v0.2.0 APK (this exact version)](https://github.com/wwahmed/WakiDownload/releases/download/v0.2.0/WakiDownload-v0.2.0.apk) · [v0.2.0 notes](https://github.com/wwahmed/WakiDownload/releases/tag/v0.2.0)
+- [Latest APK (always newest)](https://github.com/wwahmed/waki-download/releases/latest/download/WakiDownload.apk) · [release notes](https://github.com/wwahmed/waki-download/releases/latest)
+- [v0.2.0 APK (this exact version)](https://github.com/wwahmed/waki-download/releases/download/v0.2.0/WakiDownload-v0.2.0.apk) · [v0.2.0 notes](https://github.com/wwahmed/waki-download/releases/tag/v0.2.0)
 <!-- CURRENT_VERSION:END -->
 
 ## Use it
@@ -38,7 +38,7 @@ limitation, is in [docs/CLOUD_SETUP.md](docs/CLOUD_SETUP.md).
 ## Install
 
 See [INSTALL.md](INSTALL.md). Stable download URL:
-`https://github.com/wwahmed/WakiDownload/releases/latest/download/WakiDownload.apk`
+`https://github.com/wwahmed/waki-download/releases/latest/download/WakiDownload.apk`
 
 ## Build and ship
 

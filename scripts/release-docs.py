@@ -16,7 +16,7 @@ if not re.fullmatch(r"[0-9a-f]{64}", sha):
     sys.exit(f"refusing: '{sha}' is not a SHA-256")
 
 root = pathlib.Path(__file__).resolve().parent.parent
-repo = "https://github.com/wwahmed/WakiDownload"
+repo = "https://github.com/wwahmed/waki-download"
 block = f"""**Current version: v{version}** · SHA-256 `{sha}`
 
 - [Latest APK (always newest)]({repo}/releases/latest/download/WakiDownload.apk) · [release notes]({repo}/releases/latest)

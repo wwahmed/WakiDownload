@@ -5,7 +5,7 @@
 #
 #   WakiDownload-vX.Y.Z.apk   versioned asset
 #   WakiDownload.apk          unversioned asset, so the stable URL resolves:
-#                             https://github.com/wwahmed/WakiDownload/releases/latest/download/WakiDownload.apk
+#                             https://github.com/wwahmed/waki-download/releases/latest/download/WakiDownload.apk
 #   latest.json               the in-app updater manifest (version, versionCode, sha256, cert)
 #
 # `gh release upload file#Name` sets a display LABEL, not the asset name, so the script copies
@@ -17,7 +17,7 @@
 # Requires: gh (authenticated), $ANDROID_HOME build-tools (aapt, apksigner), python3.
 set -euo pipefail
 
-REPO="wwahmed/WakiDownload"
+REPO="wwahmed/waki-download"
 # Release signing cert, FULL digest. Load-bearing: the app's updater pins the same value
 # (app/build.gradle.kts releaseCertSha256). Keystore: ~/.wakilabs-keystores/WakiDownload.jks
 EXPECTED_CERT="b155b93522ccf54d35e3a0b5a268a36e766413f679e44e0dd34e68b33ff532c8"
